@@ -44,10 +44,9 @@
     "instrument": false
   },
   "dependencies": {
-    "axios": "^0.19.0",
     "babel-preset-react": "^6.24.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-loading": "^2.0.3"
+    "styled-components": "^4.3.2"
   }
 }

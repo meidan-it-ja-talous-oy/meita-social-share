@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {ShareButton} from '../Components/ShareButton';
 import PropTypes from 'prop-types';
 
-
 class SocialShare extends Component {
 
 	constructor(props) {

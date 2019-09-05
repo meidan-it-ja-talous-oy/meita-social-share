@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import styled from 'styled-components';
 
 const platformData = {
 		  platforms: {
@@ -19,6 +19,13 @@ const platformData = {
 		   }
 		};
 
+const StyledContainer = styled.div`
+	margin-left: 3px;
+	margin-right: 3px;
+	display: inline-block;
+	max-width: 24px;
+`;
+
 class ShareButton extends Component {
 
     constructor() {
@@ -32,16 +39,15 @@ class ShareButton extends Component {
         	currentURL = currentURL + "&title=" + document.title;
         }
         return (
-            <div className="singleShareButtonContainer">
+            <StyledContainer className="singleShareButtonContainer">
               <span className={platform}><a target="_blank" href={platformData.platforms[platform].URL + currentURL}><img src={platformData.platforms[platform].icon} /></a></span>
-            </div>
+            </StyledContainer>
         );
     }
 }
 
 ShareButton.propTypes = {
-    config: PropTypes.String,
-    key: PropTypes.String
+    config: PropTypes.string
 };
 
 export { ShareButton };
