@@ -1,10 +1,8 @@
-/* global __dirname, require, module*/
-
 const webpack = require('webpack');
 const path = require('path');
-const env = require('yargs').argv.env; // use --env with webpack 2
+const env = require('yargs').argv.env;
 const pkg = require('./package.json');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 let outputFile, mode;
 
 if (env === 'build') {
@@ -35,6 +33,32 @@ const config = {
         exclude: /(node_modules|bower_components)/
       }
     ]
+  },
+  optimization: {
+	  minimizer: [new UglifyJsPlugin({
+	        uglifyOptions: {
+	            warnings: false,
+	            parse: {},
+	            compress: {},
+	            mangle: true, 
+	            output: null,
+	            toplevel: false,
+	            nameCache: null,
+	            ie8: false,
+	            keep_fnames: false,
+	          },
+	        })],
+	        namedModules: false,
+	        namedChunks: false,
+	        nodeEnv: 'production',
+	        flagIncludedChunks: true,
+	        occurrenceOrder: true,
+	        sideEffects: true,
+	        usedExports: true,
+	        concatenateModules: true,
+	        noEmitOnErrors: true,
+	        checkWasmTypes: true,
+	        minimize: true
   },
   resolve: {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
