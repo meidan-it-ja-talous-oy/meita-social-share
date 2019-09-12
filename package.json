@@ -45,8 +45,10 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
+    "i18next": "^17.0.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-i18next": "^10.12.4",
     "styled-components": "^4.3.2"
   }
 }

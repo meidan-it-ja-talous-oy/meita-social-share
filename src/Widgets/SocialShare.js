@@ -8,17 +8,23 @@ class SocialShare extends Component {
 	constructor(props) {
 	    super(props);
 	    const configJson = JSON.parse(this.props.config);
+	    var langSetting = "en";
+	    if(this.props.lang != null){
+	    	langSetting = this.props.lang;
+	    }
 	    this.state = {
-	    	config: configJson
+	    	config: configJson,
+	    	lang: langSetting
 	    }
 	 }
 	
 	 render () {
 		 const platforms = this.state.config.platforms;
+		 const languageKey = this.state.lang;
 	    return (
 	      <div className="socialShareContainer">
 	      {platforms.map(function(platform, index){
-              return <ShareButton key={ index } config={platform} />;
+              return <ShareButton key={ index } config={platform} langKey={languageKey} />;
             })}
 	      </div>
 	    )
@@ -27,7 +33,8 @@ class SocialShare extends Component {
 }
 
 SocialShare.propTypes = {
-    contact: PropTypes.object
+    contact: PropTypes.object,
+    lang: PropTypes.string
 };
 
 export default SocialShare;

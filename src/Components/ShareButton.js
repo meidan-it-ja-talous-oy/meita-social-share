@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import i18n from "i18next";
 
 const platformData = {
 		  platforms: {
@@ -19,6 +20,20 @@ const platformData = {
 		   }
 		};
 
+
+const resources = {
+en: {
+ translation: {
+   "share_in": "Share in"
+ }
+},
+fi: {
+	 translation: {
+	   "share_in": "Jaa"
+	 }
+	}
+};
+
 const StyledContainer = styled.div`
 	margin-left: 3px;
 	margin-right: 3px;
@@ -28,8 +43,13 @@ const StyledContainer = styled.div`
 
 class ShareButton extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        const languageProp = this.props.langKey;
+        i18n.init({
+      	  resources,
+      	  lng: languageProp
+      	});
     }
 
     render() {
@@ -40,14 +60,15 @@ class ShareButton extends Component {
         }
         return (
             <StyledContainer className="singleShareButtonContainer">
-              <span className={platform}><a target="_blank" href={platformData.platforms[platform].URL + currentURL}><img src={platformData.platforms[platform].icon} /></a></span>
+              <span className={platform}><a target="_blank" href={platformData.platforms[platform].URL + currentURL} aria-label={i18n.t('share_in') + " " + platform}><img src={platformData.platforms[platform].icon} alt={platform + " icon"} /></a></span>
             </StyledContainer>
         );
     }
 }
 
 ShareButton.propTypes = {
-    config: PropTypes.string
+    config: PropTypes.string,
+    langKey: PropTypes.string
 };
 
 export { ShareButton };
