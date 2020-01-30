@@ -25,6 +25,10 @@ const platformData = {
 				  URL: "fb-messenger://share/?link=",
 				  icon: "https://static.pohjoiskarjala.net/ico/messenger.png",
 				  appId: "&app_id=186742706063596"
+			  },
+			  vk: {
+				  URL: "http://vk.com/share.php?url=",
+				  icon: "https://static.pohjoiskarjala.net/ico/vk.png"
 			  }
 		   }
 		};
