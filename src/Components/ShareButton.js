@@ -18,7 +18,7 @@ const platformData = {
 				  icon : "https://static.pohjoiskarjala.net/ico/linkedin.png"
 			  },
 			  whatsapp: {
-				  URL: "whatsapp://send?text=",
+				  URL: "https://api.whatsapp.com/send?text=",
 				  icon: "https://static.pohjoiskarjala.net/ico/whatsapp.png"
 			  },
 			  messenger: {
